@@ -16,6 +16,7 @@ subprojects {
     repositories {
         jcenter()
         mavenCentral()
+        mavenLocal()
     }
 
     dependencies {
@@ -48,6 +49,7 @@ subprojects {
     }
 
     test {
+        systemProperty "helium.device_url", "he://.//dev/nvme0n1"
         environment = [
             rootDir: rootProject.projectDir.absolutePath
         ]

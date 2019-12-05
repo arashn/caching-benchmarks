@@ -1,0 +1,5 @@
+dependencies {
+    compile project(':hibernate')
+    compile "org.hibernate:hibernate-jcache:$hibernateVersion"
+    runtime "com.serisys:helium-hibernate-2lc:1.00"
+}

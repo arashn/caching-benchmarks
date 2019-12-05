@@ -62,6 +62,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:/tmp/caches"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.connection.pool_size" value="100"/>
             <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="hibernate.generate_statistics" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
@@ -82,6 +83,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:/tmp/caches"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.connection.pool_size" value="100"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.generate_statistics" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
@@ -103,6 +105,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:/tmp/caches"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.connection.pool_size" value="100"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.generate_statistics" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
@@ -117,6 +120,31 @@
                 value="com.github.benmanes.caffeine.jcache.spi.CaffeineCachingProvider"/>
         </properties>
     </persistence-unit>
+    <persistence-unit name="hibernate-helium-cachedPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>org.kordamp.javatrove.cache.HbmPerson</class>
+        <class>org.kordamp.javatrove.cache.HbmAddress</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:/tmp/caches"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.connection.pool_size" value="100"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <property name="hibernate.generate_statistics" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.use_query_cache" value="true"/>
+            <property name="hibernate.cache.ehcache.statistics" value="true"/>
+            <property name="hibernate.cache.region.factory_class"
+                      value="org.hibernate.cache.jcache.JCacheRegionFactory"/>
+            <property
+                name="hibernate.javax.cache.provider"
+                value="com.serisys.helium.jcache.HeCachingProvider"/>
+        </properties>
+    </persistence-unit>
     <persistence-unit name="hibernate-ehcache-cachedPersistenceUnit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>org.kordamp.javatrove.cache.HbmPerson</class>
@@ -127,6 +155,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:/tmp/caches"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.connection.pool_size" value="100"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.generate_statistics" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
@@ -148,6 +177,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:/tmp/caches"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.connection.pool_size" value="100"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.generate_statistics" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
@@ -169,6 +199,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:/tmp/caches"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.connection.pool_size" value="100"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.generate_statistics" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
