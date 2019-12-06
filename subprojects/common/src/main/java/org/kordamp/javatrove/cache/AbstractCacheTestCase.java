@@ -173,18 +173,18 @@ public abstract class AbstractCacheTestCase {
         em1.close();
 
         EntityManager em2 = entityManagerFactory.createEntityManager();
-        measurements.add(executeQueryOn(em2, "em02 [load L1C02; hit L2C]", entityCount));
+        measurements.add(executeQueryOn(em2, "em02 [load L1C02]", entityCount));
 
-        measurements.add(executeQueryOn(em2, "em02 [hit l1C02]", entityCount));
+        measurements.add(executeQueryOn(em2, "em02 [hit L1C02]", entityCount));
 
         em2.clear(); // erase L1C2
-        measurements.add(executeQueryOn(em2, "em02 [load L1C02; hit L2C]", entityCount));
+        measurements.add(executeQueryOn(em2, "em02 [load L1C02]", entityCount));
 
         em2.clear(); // erase L1C2
         entityManagerFactory.getCache().evictAll(); // erase L2C
         measurements.add(executeQueryOn(em2, "em02 [load L1C02; load L2C]", entityCount));
 
-        measurements.add(executeQueryOn(em2, "em02 [hit l1C02]", entityCount));
+        measurements.add(executeQueryOn(em2, "em02 [hit L1C02]", entityCount));
 
         int serialLimit = 10;
         for (int i = 3; i < serialLimit; i++) {
@@ -232,7 +232,7 @@ public abstract class AbstractCacheTestCase {
         List<Measurement> measurements = new ArrayList<>();
         EntityManager em = entityManagerFactory.createEntityManager();
         String suffix = index < 10 ? "0" + index : "" + index;
-        measurements.add(executeQueryOn(em, "em" + suffix + " [load L1C" + suffix + "; hit L2C]", entityCount));
+        measurements.add(executeQueryOn(em, "em" + suffix + " [load L1C" + suffix + "]", entityCount));
         measurements.add(executeQueryOn(em, "em" + suffix + " [hit L1C" + suffix + "]", entityCount));
         em.close();
         return measurements;
